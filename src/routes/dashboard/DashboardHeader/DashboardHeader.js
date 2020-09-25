@@ -12,7 +12,7 @@ export default function DashboardHeader({
 	const history = useHistory()
 	const logOut = () => {
 		handleLogOut()
-		history.push('/landing')
+		history.push('/')
 	}
 
 	const renderMiddleButton = () => {
@@ -33,10 +33,14 @@ export default function DashboardHeader({
 		<header className='dashboard__header'>
 			<div className='header__text'>
 				<h1>BuddyUp</h1>
-				{subHeaderText && <h2>{subHeaderText}</h2>}
-				{numActivities && numText ? (
+				{subHeaderText || numActivities ? (
 					<div>
-						{numActivities} {numText}
+						{subHeaderText && <h2>{subHeaderText}</h2>}
+						{numActivities && numText ? (
+							<div>
+								{numActivities} {numText}
+							</div>
+						) : null}
 					</div>
 				) : null}
 			</div>

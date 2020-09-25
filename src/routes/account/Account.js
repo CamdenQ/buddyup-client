@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router'
 import config from '../../config'
 import TokenService from '../../services/token-service'
 import DashboardHeader from '../dashboard/DashboardHeader/DashboardHeader'
@@ -8,7 +7,6 @@ import AccountActivityList from './AccountActivityList/AccountActivityList'
 import AccountRequestList from './AccountRequestList/AccountRequestList'
 
 export default function Account() {
-	const history = useHistory()
 	const [error, setError] = useState(null)
 	const [activities, setActivities] = useState([])
 	const [requests, setRequests] = useState([])
@@ -27,7 +25,6 @@ export default function Account() {
 					}
 				)
 				const data = await response.json()
-				console.log(data)
 				if (data.error) throw data.error
 
 				setActivities(data)
@@ -109,6 +106,7 @@ export default function Account() {
 							</>
 						)}
 					</nav>
+					<hr className='account__divider' />
 					{!toggleList ? (
 						<AccountActivityList
 							activities={activities}
