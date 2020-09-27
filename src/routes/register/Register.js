@@ -38,6 +38,8 @@ export default function Register() {
 			setError('Passwords do not match')
 		} else if (password.split().join() === ' ') {
 			setError('Passwords cannot be blank')
+		} else if (zip_code.length !== 5 || isNaN(zip_code)) {
+			setError('Zip Code must be a 5-digit number')
 		} else {
 			let user = {
 				name,
@@ -63,6 +65,7 @@ export default function Register() {
 				}
 			)
 			const data = await response.json()
+			if (data.error) throw data.error
 			const { authToken } = data.password
 			const { saveAuthToken } = TokenService
 
@@ -70,7 +73,7 @@ export default function Register() {
 			setIsLogged()
 			history.push('/dashboard')
 		} catch (error) {
-			setError(error.error)
+			setError(error)
 		}
 	}
 	return (
