@@ -10,7 +10,7 @@ BuddyUp is an application that allows you to organize and create activities in y
 ## Landing Page
 
 This is the initial view upon navigating to the app's home page.
-![Landing Page](./assets/buddyup-landing.png)
+<img src="https://github.com/thinkful-ei-panda/buddyup-client/blob/master/assets/buddyup-landing.png" width="200" />
 
 ## Registration
 
